@@ -1,6 +1,6 @@
 import argparse
 import random
-
+random.seed(0)
 parser = argparse.ArgumentParser()
 parser.add_argument('--input_file')
 parser.add_argument('--out_path')
