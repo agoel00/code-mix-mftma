@@ -28,9 +28,9 @@ parser.add_argument('--feature_dir', type=str, default='features',
                     help='Output feature data directory.')
 
 # Parameters
-# parser.add_argument('--pretrained_model_name', type=str, default='bert-base-cased',
-#                     choices=['bert-base-cased', 'openai-gpt', 'distilbert-base-uncased',
-#                              'roberta-base', 'albert-base-v1'], help='Pretrained model name.')
+parser.add_argument('--pretrained_model_name', type=str, default='bert-base-cased',
+                    choices=['bert-base-cased', 'openai-gpt', 'distilbert-base-uncased',
+                             'roberta-base', 'albert-base-v1'], help='Pretrained model name.')
 parser.add_argument('--mask', action='store_true', default=False,
                     help='Boolean indicating whether to mask relevant word.')
 parser.add_argument('--random_init', action='store_true', default=False,
