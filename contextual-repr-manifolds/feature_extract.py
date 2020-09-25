@@ -28,13 +28,14 @@ parser.add_argument('--feature_dir', type=str, default='features',
                     help='Output feature data directory.')
 
 # Parameters
-parser.add_argument('--pretrained_model_name', type=str, default='bert-base-cased',
-                    choices=['bert-base-cased', 'openai-gpt', 'distilbert-base-uncased',
-                             'roberta-base', 'albert-base-v1'], help='Pretrained model name.')
+# parser.add_argument('--pretrained_model_name', type=str, default='bert-base-cased',
+#                     choices=['bert-base-cased', 'openai-gpt', 'distilbert-base-uncased',
+#                              'roberta-base', 'albert-base-v1'], help='Pretrained model name.')
 parser.add_argument('--mask', action='store_true', default=False,
                     help='Boolean indicating whether to mask relevant word.')
 parser.add_argument('--random_init', action='store_true', default=False,
                     help='Boolean indication whether to randomly initialize the model.')
+parser.add_argument('--model_path', type=str)
 
 
 args = parser.parse_args()
@@ -42,12 +43,12 @@ print(args)
 
 print('Extracting Features')
 
-tokenizer = AutoTokenizer.from_pretrained(args.pretrained_model_name)
-config = AutoConfig.from_pretrained(args.pretrained_model_name, output_hidden_states=True)
+tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+config = AutoConfig.from_pretrained(args.model_path, output_hidden_states=True)
 if args.random_init: # random initialization of the model
     model = AutoModel.from_config(config)
 else:
-    model = AutoModel.from_pretrained(args.pretrained_model_name, config=config)
+    model = AutoModel.from_pretrained('{}/pytorch_model.bin'.format(args.model_path), config=config)
 
 manifold_vectors = defaultdict(dict)
 with open(args.tag_file) as f:

@@ -87,8 +87,8 @@ optional arguments:
                         prepare_data.py.
   --feature_dir FEATURE_DIR
                         Output feature data directory.
-  --pretrained_model_name {bert-base-cased,openai-gpt,distilbert-base-uncased,roberta-base,albert-base-v1}
-                        Pretrained model name.
+  --model_path PATH_TRAINED_MODEL
+                        Pretrained codemixed model path.
   --mask                Boolean indicating whether to mask relevant word.
   --random_init         Boolean indication whether to randomly initialize the
                         model.
