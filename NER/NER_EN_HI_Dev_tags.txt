@@ -1,7 +1,6 @@
 I-Loc
 B-Org
 I-Per
-Other
 B-Per
 I-Org
 B-Loc
